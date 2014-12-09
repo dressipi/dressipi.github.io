@@ -19,3 +19,18 @@ $(".content").click( function() {
 $(".logo").click( function() {
   window.location = "index.html";
 });
+
+function showCurrent(page) {
+  body = $('body');
+  link = $("#menu li[data-page='"+ page +"'] a");
+
+  if (body.hasClass(page)) {
+    link.addClass('current');
+  } else { }
+}
+
+var pages = ["style-adviser", "outfits", "size-finder", "about", "jobs", "contact"];
+
+$.each( pages, function(index, value) {
+   showCurrent(value);
+});

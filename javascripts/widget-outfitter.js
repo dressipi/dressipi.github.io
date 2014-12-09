@@ -22,33 +22,45 @@
         }
       }
     };
-    if ($('.occasions li').length > 1) {
-      $('.occasions li:first-child').addClass('current');
-      $('.occasions li').click(function(e) {
-        var $this, el, index_of_occasion, occasion, occasions;
-        $this = $(this);
-        $('.occasions li').removeClass('current');
-        $this.addClass('current');
-        occasion = $this.data('occasion');
-        occasions = (function() {
-          var _i, _len, _ref, _results;
-          _ref = $('ul.outfits li.outfit');
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            el = _ref[_i];
-            _results.push($(el).data('occasion'));
-          }
-          return _results;
-        })();
-        index_of_occasion = $.inArray(occasion, occasions);
-        if (index_of_occasion >= 0) {
-          $('.outfits').slickGoTo(index_of_occasion);
+    $('.occasions li:first-child').addClass('current');
+    $('.occasions li').click(function(e) {
+      var $this, el, index_of_occasion, occasion, occasions;
+      $this = $(this);
+      $('.occasions li').removeClass('current');
+      $this.addClass('current');
+      occasion = $this.data('occasion');
+      occasions = (function() {
+        var _i, _len, _ref, _results;
+        _ref = $('ul.outfits li.outfit');
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          el = _ref[_i];
+          _results.push($(el).data('occasion'));
         }
-        return e.preventDefault();
-      });
-    } else {
-      $('.occasion li').addClass('only');
-    }
+        return _results;
+      })();
+      index_of_occasion = $.inArray(occasion, occasions);
+      if (index_of_occasion >= 0) {
+        $('.outfits').slickGoTo(index_of_occasion);
+      }
+      return e.preventDefault();
+    });
+    $("#widget-outfitter .similar-items").hide();
+    $("#widget-outfitter .tabs li[data=\"complete-the-look\"]").addClass('current');
+    $("#widget-outfitter .tabs li").click(function() {
+      $("#widget-outfitter .tabs li").removeClass('current');
+      return $(this).addClass('current');
+    });
+    $("#widget-outfitter .tabs li[data=\"similar-items\"]").click(function() {
+      $("#widget-outfitter .occasions").hide();
+      $("#widget-outfitter .outfits").hide();
+      return $("#widget-outfitter .similar-items").show();
+    });
+    $("#widget-outfitter .tabs li[data=\"complete-the-look\"]").click(function() {
+      $("#widget-outfitter .occasions").show();
+      $("#widget-outfitter .outfits").show();
+      return $("#widget-outfitter .similar-items").hide();
+    });
     outfit_container = $('.outfits');
     outfit_container.slick(settings);
   }

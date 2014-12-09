@@ -9210,6 +9210,21 @@ $(".content").click( function() {
 $(".logo").click( function() {
   window.location = "index.html";
 });
+
+function showCurrent(page) {
+  body = $('body');
+  link = $("#menu li[data-page='"+ page +"'] a");
+
+  if (body.hasClass(page)) {
+    link.addClass('current');
+  } else { }
+}
+
+var pages = ["style-adviser", "outfits", "size-finder", "about", "jobs", "contact"];
+
+$.each( pages, function(index, value) {
+   showCurrent(value);
+});
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -9253,38 +9268,81 @@ $(".logo").click( function() {
         }
       }
     };
-    if ($('.occasions li').length > 1) {
-      $('.occasions li:first-child').addClass('current');
-      $('.occasions li').click(function(e) {
-        var $this, el, index_of_occasion, occasion, occasions;
-        $this = $(this);
-        $('.occasions li').removeClass('current');
-        $this.addClass('current');
-        occasion = $this.data('occasion');
-        occasions = (function() {
-          var _i, _len, _ref, _results;
-          _ref = $('ul.outfits li.outfit');
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            el = _ref[_i];
-            _results.push($(el).data('occasion'));
-          }
-          return _results;
-        })();
-        index_of_occasion = $.inArray(occasion, occasions);
-        if (index_of_occasion >= 0) {
-          $('.outfits').slickGoTo(index_of_occasion);
+    $('.occasions li:first-child').addClass('current');
+    $('.occasions li').click(function(e) {
+      var $this, el, index_of_occasion, occasion, occasions;
+      $this = $(this);
+      $('.occasions li').removeClass('current');
+      $this.addClass('current');
+      occasion = $this.data('occasion');
+      occasions = (function() {
+        var _i, _len, _ref, _results;
+        _ref = $('ul.outfits li.outfit');
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          el = _ref[_i];
+          _results.push($(el).data('occasion'));
         }
-        return e.preventDefault();
-      });
-    } else {
-      $('.occasion li').addClass('only');
-    }
+        return _results;
+      })();
+      index_of_occasion = $.inArray(occasion, occasions);
+      if (index_of_occasion >= 0) {
+        $('.outfits').slickGoTo(index_of_occasion);
+      }
+      return e.preventDefault();
+    });
+    $("#widget-outfitter .similar-items").hide();
+    $("#widget-outfitter .tabs li[data=\"complete-the-look\"]").addClass('current');
+    $("#widget-outfitter .tabs li").click(function() {
+      $("#widget-outfitter .tabs li").removeClass('current');
+      return $(this).addClass('current');
+    });
+    $("#widget-outfitter .tabs li[data=\"similar-items\"]").click(function() {
+      $("#widget-outfitter .occasions").hide();
+      $("#widget-outfitter .outfits").hide();
+      return $("#widget-outfitter .similar-items").show();
+    });
+    $("#widget-outfitter .tabs li[data=\"complete-the-look\"]").click(function() {
+      $("#widget-outfitter .occasions").show();
+      $("#widget-outfitter .outfits").show();
+      return $("#widget-outfitter .similar-items").hide();
+    });
     outfit_container = $('.outfits');
     outfit_container.slick(settings);
   }
 
 }).call(this);
+var idClient = "6150449";
+var apiKey = "E8f8fIGCl0wIHgYJRpoTxw";
+var jsLoc =  "https://d1vrqwgmdbblos.cloudfront.net/assets/brand_alley.js";
+var productCode = "1307964";
+//<![CDATA[
+(function (widgetDomElement, widgetOptions) {
+  var loadAsync = function (url, callback) {
+    var done, head, script;
+    done = false;
+    head = window.document.getElementsByTagName('head')[0];
+    script = window.document.createElement('script');
+    script.src = url;
+    script.onload = script.onreadystatechange = function () {
+      if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+        done = true;
+        callback();
+      }
+    };
+    head.appendChild(script);
+  };
+
+  var initWidget = function () {
+    window.Dressipi.initWidget(widgetDomElement, widgetOptions);
+  };
+
+  loadAsync(jsLoc, initWidget);
+
+})(document.getElementById('widget-container'), {userId: idClient, productCode: productCode, apiKey: apiKey, loginMethod: function () {
+  //console.log('login method called')
+}, forceLocaleSizeSet: '1' });  //]]>
+;
 (function() {
 
 
