@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='assets/javascripts/load_async.js'></script>
+  </head>
+  <body>
+    <div id='dressipi-search-widget'></div>
+    <script>
+      (function() {
+      
+        (function() {
+          var host, initWidgets, jsURL, searchEl, searchId;
+          host = "dressipi.[retailer.com]";
+          searchEl = document.getElementById("dressipi-search-widget");
+          searchId = "[search id]";
+          initWidgets = function() {
+            window.Dressipi.initSearchWidget(widgetElement, {
+              searchId: searchId,
+              host: host,
+              apiKey: "[api key]"
+            });
+          };
+          jsURL = "http://[cdn host]/assets/widget_loader.js";
+          window.loadAsync(jsURL, initWidgets);
+        })();
+      
+      }).call(this);
+    </script>
+  </body>
+</html>

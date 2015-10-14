@@ -1,0 +1,27 @@
+== Iframe host page
+
+This is usually a single page on your site that embeds the Style Adviser application. We provide a javascript snippet to place on this page that allows the iframe to resize itself.
+
+== Widgets
+
+There are currently three widgets available:
+
+1. The sizing (banner) widget displays a recommended size. It also provides a signup call to action.
+
+2. The outfits widget displays related products, either because they are similar to the current product or because together with the current product they form an outfit.
+
+3. The saved search widget allows a subset of the user’s recommendations to be displayed outside of the Style Adviser pages. The user sees garments that matched the saved search that are the most recommended to the user. These saved searches are executed against the Dressipi-held metadata and so can reference our features.
+
+The integration steps are similar in each case:
+
+1. Load the Style Adviser widget loader javascript (this is small, cacheable and has no dependencies) from our CDN.
+
+2. Call the appropriate entrypoint.
+
+The parameters passed vary according to the widget type but include:
+
+1. a DOM element that the widget should be inserted into
+
+2. for the sizing and outfits widget, a product code (this must be matchable to the data in the product feed)
+
+The widget loader inserts an invisible iframe into the page and loads the content into the iframe. The iframe is only made visible once it has loaded successfully.

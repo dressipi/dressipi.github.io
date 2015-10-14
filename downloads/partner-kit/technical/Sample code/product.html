@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='assets/javascripts/load_async.js'></script>
+    <title>Product page</title>
+  </head>
+  <body>
+    <div id='dressipi-banner-widget'></div>
+    <div id='dressipi-outfits-widget'></div>
+    <script>
+      (function() {
+      
+        (function() {
+          var bannerEl, host, initWidgets, jsURL, outfitsEl, productCode;
+          host = "dressipi.[retailer.com]";
+          bannerEl = document.getElementById("dressipi-banner-widget");
+          outfitsEl = document.getElementById("dressipi-outfits-widget");
+          productCode = "[product code]";
+          initWidgets = function() {
+            window.Dressipi.initWidget({
+              widgets: {
+                banner: {
+                  domEl: bannerEl
+                },
+                outfits: {
+                  domEl: outfitsEl
+                }
+              },
+              productCode: productCode,
+              host: host,
+              apiKey: "[api key]"
+            });
+          };
+          jsURL = "http://[cdn host]/assets/widget_loader.js";
+          window.loadAsync(jsURL, initWidgets);
+        })();
+      
+      }).call(this);
+    </script>
+  </body>
+</html>
