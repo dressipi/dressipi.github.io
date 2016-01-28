@@ -9276,14 +9276,14 @@ $.each( pages, function(index, value) {
       $this.addClass('current');
       occasion = $this.data('occasion');
       occasions = (function() {
-        var _i, _len, _ref, _results;
-        _ref = $('ul.outfits li.outfit');
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          el = _ref[_i];
-          _results.push($(el).data('occasion'));
+        var i, len, ref, results;
+        ref = $('ul.outfits li.outfit');
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          el = ref[i];
+          results.push($(el).data('occasion'));
         }
-        return _results;
+        return results;
       })();
       index_of_occasion = $.inArray(occasion, occasions);
       if (index_of_occasion >= 0) {
