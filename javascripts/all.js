@@ -9314,7 +9314,7 @@ $.each( pages, function(index, value) {
 }).call(this);
 var idClient = "6150449";
 var apiKey = "E8f8fIGCl0wIHgYJRpoTxw";
-var jsLoc =  "https://d1vrqwgmdbblos.cloudfront.net/assets/brand_alley.js";
+var jsLoc =  "https://d25ay4ccr3bjbn.cloudfront.net/assets/brand_alley.js";
 var productCode = "1307964";
 //<![CDATA[
 (function (widgetDomElement, widgetOptions) {
@@ -9339,7 +9339,7 @@ var productCode = "1307964";
 
   loadAsync(jsLoc, initWidget);
 
-})(document.getElementById('widget-container'), {userId: idClient, productCode: productCode, apiKey: apiKey, loginMethod: function () {
+})(document.getElementById('widget-container'), {host: 'pantheon-staging.dressipi.co.uk', userId: idClient, productCode: productCode, apiKey: apiKey, loginMethod: function () {
   //console.log('login method called')
 }, forceLocaleSizeSet: '1' });  //]]>
 ;
